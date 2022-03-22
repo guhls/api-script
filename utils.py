@@ -11,13 +11,14 @@ with open('asset/nomes.csv', 'r') as file:
     df = pd.read_csv(file)
 
 names = df['first_name'].squeeze()
-extra_names = pd.Series(['TACCIANE', 'NUMA'])
-names = names.append(extra_names).to_list()
+extra_names = pd.Series(['TACCIANE'])
+names_ibge = names.append(extra_names).to_list()
 
 
-def is_user(email):
-    login = email[:email.index('@')]
-    if login.split('.')[0].upper() in names:
+def is_user(name):
+    firstname = unidecode.unidecode(name)
+    firstname = firstname.split()
+    if firstname[0].upper().strip() in names_ibge:
         return True
     else:
         return False
@@ -33,3 +34,10 @@ def in_zarpo(last_login):
         return True
     else:
         return False
+
+
+def last_date(my_date):
+    format_time = '%Y-%m-%dT%H:%M:%S.%fZ'
+    today = dt.datetime.today()
+    count_days = today - dt.datetime.strptime(my_date, format_time)
+    return count_days.days + 1
