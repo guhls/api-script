@@ -7,7 +7,7 @@ import unidecode
 service_admin = build('admin', 'directory_v1', credentials=get_creds())
 service_sheets = build('sheets', 'v4', credentials=get_creds())
 
-with open('asset/nomes.csv', 'r') as file:
+with open('scripts_zarpo/asset/nomes.csv', 'r') as file:
     df = pd.read_csv(file)
 
 names = df['first_name'].squeeze()

@@ -1,5 +1,3 @@
-import time
-
 from utils import service_admin, service_sheets, is_user, in_zarpo, last_date
 
 
