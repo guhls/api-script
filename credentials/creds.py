@@ -9,6 +9,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 
 SCOPES = [
     'https://www.googleapis.com/auth/admin.directory.user.readonly',
+    'https://www.googleapis.com/auth/admin.directory.group.readonly',
     'https://www.googleapis.com/auth/spreadsheets',
 ]
 
@@ -26,7 +27,7 @@ def get_creds():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'scripts_zarpo/credentials/credentials.json', SCOPES)
+                '/home/gustavo/wp/wp_py/scripts_zarpo/scripts_zarpo/credentials/credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.json', 'w') as token:
