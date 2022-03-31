@@ -3,3 +3,4 @@ credentials/__pycache__/
 credentials/credentials.json
 token.json
 __pycache__/utils.cpython-38.pyc
+*.pyc
